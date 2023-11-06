@@ -1,0 +1,93 @@
+@use "sass:math";
+
+$cellHeight: math.div(100%, 5);
+$spacing: 1%;
+
+#mahdi-keyboard {
+  // width: 700px;
+  // height: 300px;
+  width: fit-content;
+  padding:10px;
+
+  max-width: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(30, 30px);
+  grid-template-rows: repeat(5, 60px);
+  grid-gap: 5px;
+  background: #3f3f3f;
+
+  .keyboard-key {
+    // width: 5%;
+    // float: left;
+    // padding-top: $cellHeight - $spacing;
+    // height: 18%;
+    border: 1px solid rgb(119, 119, 119);
+    color: #ccc;
+    border-radius: 5px;
+    padding-top: 18px;
+    line-height: 100%;
+    grid-column: span 2;
+    text-align: center;
+    transition: all .1s;
+    box-sizing: border-box;
+
+    &.pressed{
+      border:3px solid #005974;
+    }
+    &.disable{
+      border:2px solid #505050 !important;
+      color: #505050 !important;
+    }
+    @for $i from 0 through 4 {
+      &.row-#{$i} {
+        clear: left;
+      }
+
+      &.row-#{$i}~.row-#{$i} {
+        clear: none;
+      }
+    }
+
+    &.key-backspace {
+      grid-column: span 4;
+    }
+
+    &.key-tab {
+      grid-column: span 3;
+    }
+
+    &.key-backslash {
+      grid-column: span 3;
+    }
+
+    &.key-caps-lock {
+      grid-column: span 4;
+    }
+
+    &.key-enter {
+      grid-column: span 4;
+    }
+
+    &.key-left-shift {
+      grid-column: span 5;
+    }
+
+    &.key-right-shift {
+      grid-column: span 5;
+    }
+
+    &.key-ctrl {
+      grid-column: span 3;
+    }
+
+    &.key-command {
+      grid-column: span 3;
+      font-size: 14px;
+    }
+
+    &.key-space {
+      grid-column: span 16;
+    }
+  }
+}
