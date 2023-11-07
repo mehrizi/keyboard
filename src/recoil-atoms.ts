@@ -1,8 +1,8 @@
 import { atom } from "recoil";
 
-export const typedStringsState = atom({
-    key: 'typedStrings',
-    default: [],
+export const screenLinesState = atom({
+    key: 'screenLines',
+    default: [''],
   });
   
   export const typedStringState = atom({
