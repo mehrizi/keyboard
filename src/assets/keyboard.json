@@ -41,7 +41,7 @@
     { "keyCode": 76, "character":"L","title": "L", "row": 2, "classes": [] },
     { "keyCode": 186, "character":";","title": ";", "row": 2, "classes": [] },
     { "keyCode": 222, "character":"'","title": "'", "row": 2, "classes": [] },
-    { "keyCode": 13, "character":"","title": "Enter","disabled":true, "row": 2, "classes": ["enter"] },
+    { "keyCode": 13, "character":"","title": "Enter","disabled":false, "row": 2, "classes": ["enter"] },
 
     { "keyCode": 16, "character":"","title": "Shift","disabled":true, "row": 3, "classes": ["shift", "left-shift"] },
     { "keyCode": 90, "character":"Z","title": "Z", "row": 3, "classes": [] },

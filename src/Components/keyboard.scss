@@ -6,7 +6,7 @@ $spacing: 1%;
 #mahdi-keyboard {
   // width: 700px;
   // height: 300px;
-  width: fit-content;
+  // width: fit-content;
   padding:10px;
 
   max-width: 100%;
@@ -33,7 +33,7 @@ $spacing: 1%;
     box-sizing: border-box;
 
     &.pressed{
-      border:3px solid #005974;
+      border:3px solid #cc00e7;
     }
     &.disable{
       border:2px solid #505050 !important;

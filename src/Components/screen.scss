@@ -1,0 +1,27 @@
+$lineHeight : 18px;
+
+#mahdi-screen-history {
+  background: #222;
+  color: #eee;
+  margin: 0;
+  height: 26* $lineHeight;
+
+  >div {
+    height: $lineHeight;
+    // display: inline-block;
+    float: left;
+    clear: left;
+    font-size: $lineHeight;
+  }
+
+  >.blinker {
+    animation: blinker 1s linear infinite;
+    clear: none;
+  }
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

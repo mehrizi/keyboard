@@ -15,14 +15,14 @@ type Key = {
 };
 type KeyboardProps = {
   lockInput?: boolean;
-  typeDone?: Function;
+  onTypeDone?: Function;
   text?: string;
 };
 type ScreenLines = string[];
 
 export function Keyboard(props: KeyboardProps) {
   const lockInput: boolean = props.lockInput ?? false;
-  const text: string = props.text ?? "";
+  // const text: string = props.text ?? "";
   let [currentIndex, setCurrentIndex] = useState(0);
   const [screenLines, setScreenLines] =
     useRecoilState<ScreenLines>(screenLinesState);
@@ -44,28 +44,6 @@ export function Keyboard(props: KeyboardProps) {
       };
     }, []);
   }
-  // screenLines[screenLines.length - 1] = text;
-  // setScreenLines([...screenLines]);
-  //
-
-  // useEffect(() => {
-  //   return;
-  //   const interval = setInterval(() => {
-  //     if (currentIndex < text.length) {
-  //       typeString(text[currentIndex]);
-  //       setCurrentIndex((prevIndex) => prevIndex + 1);
-  //     } else {
-  //       clearInterval(interval);
-  //     }
-  //   }, 200); // 200 milliseconds (0.2 seconds)
-
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // }, [text]);
-  // useEffect(() => {
-  //   const b = text;
-  // });
   const typeString = (str: string) => {
     const key: Key = keys.filter(
       (k: Key) => str[currentIndex].toUpperCase() == k.character
@@ -76,7 +54,12 @@ export function Keyboard(props: KeyboardProps) {
     if (str.length > currentIndex + 1) {
       currentIndex++;
       setCurrentIndex(currentIndex);
-      setTimeout(() => typeString(str), 200);
+      setTimeout(() => typeString(str), 100);
+    } else {
+      const enterKey: Key = keys.filter((k: Key) => 13 == k.keyCode)[0];
+      onKeyPressed(enterKey);
+      typingString = false;
+      if (props.onTypeDone) props.onTypeDone();
     }
   };
   const setPressed = (key: Key, currentKeys: Key[]) => {
@@ -97,15 +80,14 @@ export function Keyboard(props: KeyboardProps) {
     if (key.disabled) return;
     switch (key.keyCode) {
       case 8: //backspace
-        setScreenLines([
-          ...screenLines.map((ln, ind) =>
-            ind == screenLines.length - 1
-              ? ln.length > 0
-                ? ln.slice(0, -1)
-                : ln
-              : ln
+        setScreenLines((csl) => [
+          ...csl.map((ln, ind) =>
+            ind == csl.length - 1 ? (ln.length > 0 ? ln.slice(0, -1) : ln) : ln
           ),
         ]);
+        break;
+      case 13: //backspace
+        setScreenLines((csl) => [...csl, ""]);
         break;
       default:
         setScreenLines((csl) => [
@@ -113,28 +95,22 @@ export function Keyboard(props: KeyboardProps) {
             ind == csl.length - 1 ? ln + key.character : ln
           ),
         ]);
-
-        // setScreenLines((currentScreenLines) => {
-        //   setScreenLines([...screenLines.map((ln,ind)=>ind==screenLines.length - 1?ln+key.character:ln]);
-
-        // });
-        //  setTypedString(typedString + key.title);
         break;
     }
     setKeys((currentKeys) => setPressed(key, currentKeys));
     setTimeout(() => {
       setKeys((currentKeys) => setPressedRelease(key, currentKeys));
-    }, 100);
+    }, 50);
   };
   let typingString = false;
   useEffect(() => {
-    if (!typingString)
-    {
+    if (!typingString) {
       typingString = true;
-      setTimeout(() => typeString(text), 100);
+      currentIndex = 0;
+      setCurrentIndex(currentIndex);
+      setTimeout(() => typeString( props.text), 500);
     }
-    
-  },[]);
+  }, [ props.text]);
 
   return (
     <>
