@@ -47,7 +47,7 @@ export function Keyboard(props: KeyboardProps) {
         if (props.onTypeDone) props.onTypeDone();
 
       }
-    }, 50); // 200 milliseconds (0.2 seconds)
+    },Math.max(25,Math.random()*150)); // 200 milliseconds (0.2 seconds)
 
     return () => {
       clearInterval(interval);

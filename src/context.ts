@@ -18,14 +18,14 @@ export const context: contextType[] = [
                 id: 11,
                 type: "choice",
                 key: 1,
-                text: ["know about mahdi programming skills"],
+                text: ["know about mahdi's programming skills"],
                 children: [
                     {
                         id: 111,
                         type: "text",
                         text: [
                             "-- mahdi programming skills:",
-                            "Recently He has been working as fullstack or frontend developer favoring React in frontend,",
+                            "Recently He has been working as either fullstack or frontend developer favoring React in frontend,",
                             "while Laravel has been his experience in backend.",
                             "Mahdi's first website development experience was when he was at high school.",
                             "He developed a website for his highschool using simple html and ASP.",
