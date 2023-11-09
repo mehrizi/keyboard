@@ -2,17 +2,18 @@ $lineHeight : 18px;
 
 #mahdi-screen-history {
   background: #222;
-  color: #eee;
+  color: #f5f4f4;
   margin: 0;
   height: 26* $lineHeight;
   padding: 0 5px;
+  font-family: 'Courier New', Courier, monospace;
 
   >div {
     height: $lineHeight;
     // display: inline-block;
     float: left;
     clear: left;
-    font-size: $lineHeight;
+    font-size: .9*$lineHeight;
   }
 
   >.blinker {

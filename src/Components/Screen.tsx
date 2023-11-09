@@ -1,6 +1,7 @@
 import { useRecoilValue } from "recoil";
 import { screenLinesState } from "../recoil-atoms";
 import "./screen.scss";
+import { ScreenLine } from "./ScreenLine";
 
 export function Screen() {
   const screenLines = useRecoilValue(screenLinesState);
@@ -8,15 +9,13 @@ export function Screen() {
 
   return (
     <>
-      <pre id="mahdi-screen-history">
+      <div id="mahdi-screen-history">
         {last25Lines.map((str, i) => (
-          <div key={i} className="history">
-            {str}
-          </div>
+            <ScreenLine key={i} line={str} />
           
         ))}
         <div className="blinker" >_</div>
-      </pre>
+      </div>
     </>
   );
 }
