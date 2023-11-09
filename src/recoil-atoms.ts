@@ -2,7 +2,7 @@ import { atom } from "recoil";
 
 export const screenLinesState = atom({
     key: 'screenLines',
-    default: [''],
+    default: [],
   });
   
   export const typedStringState = atom({
