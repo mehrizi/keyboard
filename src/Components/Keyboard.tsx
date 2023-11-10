@@ -34,16 +34,11 @@ export function Keyboard(props: KeyboardProps) {
       return;
       if (currentIndex < props.text.length) {
         typeString(props.text)
-        // setDisplayedString((prevString) => prevString + props.text[currentIndex]);
         currentIndex++;
-        // setCurrentIndex((prevIndex) => prevIndex + 1);
         setCurrentIndex(currentIndex);
       } else {
         clearInterval(interval);
-        // const enterKey: Key = keys.filter((k: Key) => 13 == k.keyCode)[0];
-        // onKeyPressed(enterKey);
-        // currentIndex=0;
-        // setCurrentIndex(currentIndex);
+     
         if (props.onTypeDone) props.onTypeDone();
 
       }
@@ -61,9 +56,6 @@ export function Keyboard(props: KeyboardProps) {
 
   }, [props.text]);
 
-
-
-
   if (!lockInput) {
     useEffect(() => {
       const handleKeyDown = (event) => {
@@ -71,7 +63,7 @@ export function Keyboard(props: KeyboardProps) {
 
         if (filteredKeys.length == 0) return;
 
-        onKeyPressed(filteredKeys[0]);
+        onKeyPressed(filteredKeys[0],true);
       };
 
       document.addEventListener("keydown", handleKeyDown);
@@ -88,16 +80,6 @@ export function Keyboard(props: KeyboardProps) {
 
     if (key) onKeyPressed(key,false,str[currentIndex]);
 
-    // if (str.length > currentIndex + 1) {
-    //   currentIndex++;
-    //   setCurrentIndex(currentIndex);
-    //   setTimeout(() => typeString(str), 100);
-    // } else {
-    //   const enterKey: Key = keys.filter((k: Key) => 13 == k.keyCode)[0];
-    //   onKeyPressed(enterKey);
-    //   typingString = false;
-    //   if (props.onTypeDone) props.onTypeDone();
-    // }
   };
   const setPressed = (key: Key, currentKeys: Key[]) => {
     return [
@@ -142,15 +124,6 @@ export function Keyboard(props: KeyboardProps) {
       setKeys((currentKeys) => setPressedRelease(key, currentKeys));
     }, 50);
   };
-  // let typingString = false;
-  // useEffect(() => {
-  //   if (!typingString) {
-  //     typingString = true;
-  //     currentIndex = 0;
-  //     setCurrentIndex(currentIndex);
-  //     setTimeout(() => typeString( props.text), 500);
-  //   }
-  // }, [ props.text]);
 
   return (
     <>

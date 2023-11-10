@@ -92,7 +92,7 @@ export const context: contextType[] = [
                             "Well Mahdi's email is mahdi.mehrizi[at]gmail.com",
                             "You may reach me on whatsapp on +905366531986 or +989153021950",
                             "Social Media: <a href='https://www.linkedin.com/in/mahdi-mehrizi/'>Llinkedin</> ",
-                            "CV in PDF: @toDo ", // @todo
+                            "CV in PDF: <a href='./cv.pdf'>cv.pdf</a> ", // @todo
                             "You may press <i>backspace</i> to go back to menu."
                         ]
                     }
